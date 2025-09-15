@@ -1,28 +1,22 @@
 import { BotCard } from "@/components/BotCard";
-import generalBotImage from "@/assets/general-bot.jpg";
-import wikiBotImage from "@/assets/wiki-bot.jpg";
-import ticketBotImage from "@/assets/ticket-bot.jpg";
 
 const Dashboard = () => {
   const bots = [
     {
       title: "General AI Assistant",
       description: "Get help with general questions, writing, coding, and creative tasks. Like ChatGPT but customized for our organization.",
-      image: generalBotImage,
       href: "/general-chat",
       accentColor: "bg-corporate-blue"
     },
     {
       title: "Internal Wiki Bot",
       description: "Search and get answers from our internal knowledge base, documentation, and company resources.",
-      image: wikiBotImage,
       href: "/wiki-chat",
       accentColor: "bg-corporate-green"
     },
     {
       title: "Ticket Analyzer",
       description: "Analyze support tickets, extract insights, categorize issues, and suggest solutions based on historical data.",
-      image: ticketBotImage,
       href: "/ticket-chat",
       accentColor: "bg-corporate-orange"
     }
@@ -52,7 +46,6 @@ const Dashboard = () => {
               key={bot.title}
               title={bot.title}
               description={bot.description}
-              image={bot.image}
               href={bot.href}
               accentColor={bot.accentColor}
             />
