@@ -63,44 +63,48 @@ export const ChatInterface = ({ botName, botDescription, placeholder, accentColo
   };
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col bg-background">
       {/* Header */}
-      <div className="border-b bg-card p-4">
+      <div className="border-b border-border/50 bg-card/80 backdrop-blur-xl p-6">
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" asChild>
+          <Button variant="ghost" size="sm" asChild className="hover:bg-primary/10">
             <Link to="/">
-              <ArrowLeft className="h-4 w-4" />
+              <ArrowLeft className="h-5 w-5" />
             </Link>
           </Button>
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${accentColor}`}>
-            <Bot className="h-5 w-5 text-white" />
+          <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${accentColor} shadow-lg`}>
+            <Bot className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-semibold">{botName}</h1>
-            <p className="text-sm text-muted-foreground">{botDescription}</p>
+            <h1 className="text-2xl font-bold text-foreground">{botName}</h1>
+            <p className="text-muted-foreground">{botDescription}</p>
           </div>
         </div>
       </div>
 
       {/* Chat Messages */}
-      <ScrollArea className="flex-1 p-4">
-        <div className="space-y-4">
+      <ScrollArea className="flex-1 p-6">
+        <div className="space-y-6 max-w-4xl mx-auto">
           {messages.map((message) => (
             <div key={message.id} className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}>
-              <div className={`flex items-start gap-2 max-w-[80%] ${message.isUser ? 'flex-row-reverse' : 'flex-row'}`}>
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+              <div className={`flex items-start gap-4 max-w-[85%] ${message.isUser ? 'flex-row-reverse' : 'flex-row'}`}>
+                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shadow-lg ${
                   message.isUser ? 'bg-primary' : accentColor
                 }`}>
                   {message.isUser ? (
-                    <User className="h-4 w-4 text-white" />
+                    <User className="h-5 w-5 text-white" />
                   ) : (
-                    <Bot className="h-4 w-4 text-white" />
+                    <Bot className="h-5 w-5 text-white" />
                   )}
                 </div>
-                <Card className={`${message.isUser ? 'bg-primary text-primary-foreground' : 'bg-card'}`}>
-                  <CardContent className="p-3">
-                    <p className="text-sm">{message.content}</p>
-                    <p className={`text-xs mt-1 opacity-70`}>
+                <Card className={`shadow-lg border-border/50 ${
+                  message.isUser 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'bg-card/80 backdrop-blur-sm'
+                }`}>
+                  <CardContent className="p-4">
+                    <p className="leading-relaxed">{message.content}</p>
+                    <p className={`text-xs mt-2 opacity-60`}>
                       {message.timestamp.toLocaleTimeString()}
                     </p>
                   </CardContent>
@@ -112,18 +116,24 @@ export const ChatInterface = ({ botName, botDescription, placeholder, accentColo
       </ScrollArea>
 
       {/* Input Area */}
-      <div className="border-t bg-card p-4">
-        <div className="flex gap-2">
-          <Input
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder={placeholder}
-            className="flex-1"
-          />
-          <Button onClick={sendMessage} disabled={!inputMessage.trim()}>
-            <Send className="h-4 w-4" />
-          </Button>
+      <div className="border-t border-border/50 bg-card/80 backdrop-blur-xl p-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex gap-4">
+            <Input
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder={placeholder}
+              className="flex-1 bg-background/50 border-border/50 h-12 px-4 text-base rounded-xl focus:ring-2 focus:ring-primary/20"
+            />
+            <Button 
+              onClick={sendMessage} 
+              disabled={!inputMessage.trim()}
+              className="h-12 px-6 rounded-xl bg-primary hover:bg-primary/90 shadow-lg"
+            >
+              <Send className="h-5 w-5" />
+            </Button>
+          </div>
         </div>
       </div>
     </div>
