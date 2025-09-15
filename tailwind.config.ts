@@ -64,6 +64,8 @@ export default {
           "green-light": "hsl(var(--corporate-green-light))",
           orange: "hsl(var(--corporate-orange))",
           "orange-light": "hsl(var(--corporate-orange-light))",
+          purple: "hsl(var(--corporate-purple))",
+          "purple-light": "hsl(var(--corporate-purple-light))",
         },
       },
       borderRadius: {

@@ -19,6 +19,12 @@ const Dashboard = () => {
       description: "Analyze support tickets, extract insights, categorize issues, and suggest solutions based on historical data.",
       href: "/ticket-chat",
       accentColor: "bg-corporate-orange"
+    },
+    {
+      title: "Custom Bot",
+      description: "Build and interact with your own customized AI assistant tailored to your specific needs and workflows.",
+      href: "/custom-chat",
+      accentColor: "bg-corporate-purple"
     }
   ];
 

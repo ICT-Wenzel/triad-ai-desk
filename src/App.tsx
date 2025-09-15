@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import GeneralChatPage from "./pages/GeneralChatPage";
 import WikiChatPage from "./pages/WikiChatPage";
 import TicketChatPage from "./pages/TicketChatPage";
+import CustomChatPage from "./pages/CustomChatPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/general-chat" element={<GeneralChatPage />} />
           <Route path="/wiki-chat" element={<WikiChatPage />} />
           <Route path="/ticket-chat" element={<TicketChatPage />} />
+          <Route path="/custom-chat" element={<CustomChatPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
